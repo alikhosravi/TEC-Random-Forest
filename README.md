@@ -16,8 +16,7 @@ First,
 Or
     II) Place the BBox.py script in the same directory as the geospatial data and set path variable to null (path = './')
 
-Then,
-    Run the script within the virtual env:
+Then, run the script within the virtual env:
     python BBox.py
 
 
