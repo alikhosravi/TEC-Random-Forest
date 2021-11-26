@@ -29,13 +29,13 @@ for p in paths:
         if dataset is None:
             dataset = gdal.OpenEx(fileName, gdal.OF_VECTOR)
             if dataset != None:
-                # VECTOR
+
                 lyr = dataset.GetLayer()
                 numLayers = dataset.GetLayerCount()
-                # print('numLayers', numLayers)
+
 
                 for l in range(numLayers):
-                    # Obtain Layer extent
+
                     layer = dataset.GetLayer(l)
                     spatialRef = layer.GetSpatialRef()
                     extent = layer.GetExtent()
@@ -55,30 +55,26 @@ for p in paths:
             elif dataset is None:
                 print ('Open failed')
         else:
-            # RASTER
-            # projection = dataset.GetProjectionRef()
-            # print('GetProjectionRef', projection)
 
-            # Obtain coordinates
             ulx, xres, xskew, uly, yskew, yres  = dataset.GetGeoTransform()
             lrx = ulx + (dataset.RasterXSize * xres)
             lry = uly + (dataset.RasterYSize * yres)
 
-            # Transform projection
+
             source = osr.SpatialReference()
             source.ImportFromWkt(dataset.GetProjection())
             target = osr.SpatialReference()
             target.ImportFromEPSG(4326)
             transform = osr.CoordinateTransformation(source, target)
 
-            # Transform points
+ 
             ul = transform.TransformPoint(ulx, uly)
             lr = transform.TransformPoint(lrx, lry)
 
             bbox = { 'fileName': fileName, 'ul': ul, 'lr': lr }
             coordinates.append(bbox)
 
-# Convert to degrees, minutes, seconds
+
 def decdeg2dms(dd):
     is_positive = dd >= 0
     dd = abs(dd)
@@ -96,7 +92,7 @@ def decdeg2dmsTuples(ddInfo):
 
 dmsBoundaries = [decdeg2dmsTuples(ddInfo) for ddInfo in coordinates]
 
-# Convert to csv
+
 columns = ['West', 'East', 'North', 'South', '255C']
 index = [boundary['fileName'] for boundary in dmsBoundaries]
 df = pd.DataFrame(columns=columns, index=index)
@@ -118,8 +114,7 @@ def formatCoord (bounds, direction):
     return threeDigitBounds + '{:02}'.format(bounds[1]) + '{:02}'.format(bounds[2])
 
 def formatCoordDMS (boundary):
-    # W0033343 to
-    # (E010°48′40″--E010°48′54″/N063°32′40″--N063°32′34″) / W E N S
+
     return boundary[:4] + '°' + boundary[4:6] + '\'' + boundary[6:8] + '"'
 
 for boundary in dmsBoundaries:
@@ -129,6 +124,6 @@ for boundary in dmsBoundaries:
     df['South'][boundary['fileName']] = formatCoord(boundary['s'], 'NS')
 
     df['255C'][boundary['fileName']] = '(%s--%s/%s--%s)' % (formatCoordDMS(df['West'][boundary['fileName']]), formatCoordDMS(df['East'][boundary['fileName']]), formatCoordDMS(df['North'][boundary['fileName']]), formatCoordDMS(df['South'][boundary['fileName']]))
-    # print(df['255C'][boundary['fileName']])
+
 
 df.to_csv('boundaries.csv', sep=',', encoding='utf-8')
