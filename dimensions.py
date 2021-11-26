@@ -26,7 +26,7 @@ dims = []
 for p in paths:
     for f in p[1]:
         fileName = p[0] + '/' + f
-        # print(fileName)
+
         if '.tif' in fileName:
             image = Image.open(fileName)
             width, height = image.size
