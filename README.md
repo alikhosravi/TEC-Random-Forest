@@ -12,13 +12,14 @@ The output support programmers with a spreadsheet that contains the bounding box
 Usage:
 
 First,
-    I) Set the GIS data path on line 6 (eg path = './census.shp')
+    I) Set the GIS data path on line 6 (eg ``` path = './census.shp' ```)
 Or
-    II) Place the BBox.py script in the same directory as the geospatial data and set path variable to null (path = './')
+    II) Place the BBox.py script in the same directory as the geospatial data and set path variable to null (``` path = './' ```)
 
 Then, run the script within the virtual env:
-    python BBox.py
-
+```
+python BBox.py
+```
 
 Dependencies:
 
