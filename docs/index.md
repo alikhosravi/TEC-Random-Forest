@@ -297,4 +297,4 @@ plt.show()
 
 The result of the code is presented blow:
 
-![alt text](https://github.com/alikhosravi/BBox/blob/main/docs/libs.png?raw=true)
+![alt text](https://github.com/alikhosravi/BBox/blob/main/docs/Aruc-2019-Torkmanchay.png?raw=true)
