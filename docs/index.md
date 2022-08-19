@@ -1,7 +1,7 @@
 
 ## GNSS-based TEC anomaly detection
 
-<a href="https://github.com/alikhosravi/Ionosphere-GNSS-TEC/blob/main/docs/data/aruc.zip">data</a>
+<a href="aruc.zip">data</a>
 
 The changes in the ionosphere layer before, during, or after the earthquake have long been an earthquke precursor among scientists. The anomalies in Total Electron Content (TEC) of the ionosphere layer before, during, or after have been reoported by scholars. 
 A wide variety of methods have been utilized for detecting anomalies in TEC time series. Although the methods have different mechanisms, all of them construct a normal profile of TEC initially, then identify values that do not conform to the normal profile as anomalies. Regarding the ionosphere nature that is always affected by different factors, finding a normal trend is a complex even impossible task. Thus, anomaly detection results have probably too many false alarms (having normal values identified as anomalies).
