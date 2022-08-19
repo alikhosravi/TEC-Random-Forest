@@ -35,27 +35,28 @@ from bs4 import BeautifulSoup
 ### Make a date range
 In this section, we convert the dates that we are going to study in a day of year format.
 
-
-
 ```markdown
-#Dates
 def daterange(date1, date2):
     for n in range(int ((date2 - date1).days)+1):
         yield date1 + timedelta(n)
 
-#Station=input('Enter staion name :')
+#Station('Enter staion name')
 Station = 'aruc'
-#stdate= input('Enter start date in YY/MM/DD format :')
+#'Enter start date in YY/MM/DD format'
 stdate='2016/02/05'
-#endate= input('Enter End date in YY/MM/DD format :')
+#'Enter End date in YY/MM/DD format'
 endate='2016/02/25'
 dates=[]
 start_dt = date(int(stdate.split('/')[0]), int(stdate.split('/')[1]), int(stdate.split('/')[2]))
 end_dt = date(int(endate.split('/')[0]), int(endate.split('/')[1]), int(endate.split('/')[2]))
 for dt in daterange(start_dt, end_dt):
     dates.append(dt.strftime("%Y-%m-%d"))
+```
 
+### Read data
+As the next step, our program reads the 'aruc' station data. 
 
+```markdown
 Time=[];
 VTec=[];
 for date in dates:
@@ -91,9 +92,11 @@ for date in dates:
                       float(line.split(' ')[1])]);
 
   file.close()
+```  
+
+
+```markdown
 df = pd.DataFrame(data, columns=['Day', 'Hour', 'Minute', 'Second', 'VTEC'])
-
-
 vTecs=[];
 ldays=[];
 for day in list(df.groupby('Day')):
@@ -103,9 +106,9 @@ vr = list(map(list, zip(*vTecs)))
 NewDF = pd.DataFrame(vr, columns=ldays)
 
 
+
 Outliers_x=[]
 Outliers_y=[]
-
 count=0;
 def IF(List):
   global count
