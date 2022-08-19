@@ -93,7 +93,8 @@ for date in dates:
 
   file.close()
 ```  
-
+### Make a dataframe
+We create a Pandas dataframe to store our data and work on it.
 
 ```markdown
 df = pd.DataFrame(data, columns=['Day', 'Hour', 'Minute', 'Second', 'VTEC'])
@@ -104,9 +105,12 @@ for day in list(df.groupby('Day')):
   ldays.append(day[0])
 vr = list(map(list, zip(*vTecs)))
 NewDF = pd.DataFrame(vr, columns=ldays)
+```
 
+### Identify anomalies
+In this part we detect anomalies based on the isolation forest algorithm.
 
-
+```markdown
 Outliers_x=[]
 Outliers_y=[]
 count=0;
@@ -131,9 +135,9 @@ def IF(List):
   count+=1;
 
 df1 = NewDF.apply(lambda row : IF(row), axis = 1)
+```
 
-
-
+```markdown
 Response = requests.get('https://www-app3.gfz-potsdam.de/kp_index/Kp_ap_Ap_SN_F107_since_1932.txt');
 with open("KP_data.txt", "w") as f:
     f.write(Response.text)
