@@ -1,7 +1,7 @@
 
 ## GNSS-based TEC anomaly detection
 
-<a href="https://github.com/alikhosravi/Ionosphere-GNSS-TEC/raw/main/docs/data/aruc.zip" download>data</a>
+
 
 The changes in the ionosphere layer before, during, or after the earthquake have long been an earthquke precursor among scientists. The anomalies in Total Electron Content (TEC) of the ionosphere layer before, during, or after have been reoported by scholars. 
 A wide variety of methods have been utilized for detecting anomalies in TEC time series. Although the methods have different mechanisms, all of them construct a normal profile of TEC initially, then identify values that do not conform to the normal profile as anomalies. Regarding the ionosphere nature that is always affected by different factors, finding a normal trend is a complex even impossible task. Thus, anomaly detection results have probably too many false alarms (having normal values identified as anomalies).
@@ -11,27 +11,30 @@ Here, we identify anomalies regarding the fact that anomalies are very different
 
 ![alt text](https://github.com/alikhosravi/BBox/blob/main/docs/libs.jpg?raw=true)
 
-The project dependencies are listed blow:
-(If you are going to run our codes on your local machine follow the code blocks presented in this page)
+
+If you are going to run the codes on your local machine follow the code blocks presented in this page:
+
+### Download the rquired data
+To begin with, download the required <a href="https://github.com/alikhosravi/Ionosphere-GNSS-TEC/raw/main/docs/data/aruc.zip" download>data</a>. This is a .zip file containing vertical TEC of 'aruc' GNSS station from 2016/02/05 to 2016/02/25. 
+
+Extract the files in the .zip file into a new folder. 
+
+### Import the rquired libraries
+Make a new blank .py file. Then import the rquired libraries as following:
 
 ```markdown
-import subprocess
-import matplotlib.pyplot as plt
-import datetime
-from datetime import timedelta, date
 import pandas as pd
 import numpy as np
-import seaborn as sns
-from sklearn.ensemble import IsolationForest
-import requests 
-from bs4 import BeautifulSoup
 import matplotlib
+import matplotlib.pyplot as plt
+import requests 
+from sklearn.ensemble import IsolationForest
+from datetime import datetime, timedelta, date
+from bs4 import BeautifulSoup
 ```
+### Make a date range
+In this section, we convert the dates that we are going to study in a day of year format.
 
-
-
-
-### The code body
 
 
 ```markdown
