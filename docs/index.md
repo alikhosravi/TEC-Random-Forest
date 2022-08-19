@@ -8,7 +8,7 @@ A wide variety of methods have been utilized for detecting anomalies in TEC time
 Here, we identify anomalies regarding the fact that anomalies are very different and rare. We calculate the TEC anomoalies using an unsupervised  machine learning algorithm, isolation forest.
 
 
-![alt text](https://github.com/alikhosravi/BBox/blob/main/docs/libs.png?raw=true)
+![alt text](https://github.com/alikhosravi/BBox/blob/main/docs/libs.jpg?raw=true)
 
 The project dependencies are listed blow:
 (If you are going to run our codes on your local machine follow the code blocks presented in this page)
