@@ -137,6 +137,7 @@ def IF(List):
 df1 = NewDF.apply(lambda row : IF(row), axis = 1)
 ```
 
+### The Kp index
 ```markdown
 Response = requests.get('https://www-app3.gfz-potsdam.de/kp_index/Kp_ap_Ap_SN_F107_since_1932.txt');
 with open("KP_data.txt", "w") as f:
@@ -191,6 +192,10 @@ for month in Months:
       Dst_df[x[0]]=x[1:]
     except:
       print(x[0], x[1:])
+```
+
+### The Dst index
+```markdown
 
 Dst_Times=[];
 Dst_Values=[];
@@ -248,6 +253,11 @@ try:
 except:
   pass
 
+```
+
+### Visualization
+The final results of the code can be visualized using 'matplotlib' library as follows:
+```markdown
 S_DOY= int(datetime.datetime(int(dates[0].split('-')[0]), int(dates[0].split('-')[1]), int(dates[0].split('-')[2])).timetuple().tm_yday)
 E_DOY= int(datetime.datetime(int(dates[-1].split('-')[0]), int(dates[-1].split('-')[1]), int(dates[-1].split('-')[2])).timetuple().tm_yday)
 EQ_DOY=312
@@ -303,6 +313,6 @@ plt.savefig(Station+"Plot.jpg",dpi=120, bbox_inches='tight')
 plt.show()
 ```
 
-The result of the code is presented blow:
+The final result of the code is presented blow:
 
 ![alt text](https://github.com/alikhosravi/BBox/blob/main/docs/Aruc-2019-Torkmanchay.png?raw=true)
