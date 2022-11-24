@@ -8,6 +8,7 @@ warnings.simplefilter('ignore', Image.DecompressionBombWarning)
 
 path = './test_data'
 
+#Get file function
 def getFiles (path):
     paths = []
     for (dirpath, dirnames, filenames) in os.walk(path):
